@@ -112,10 +112,10 @@ Engineered specifically for field engineers, incident responders, and system adm
 | Component | Minimum Specification | Recommended Specification |
 | :--- | :--- | :--- |
 | **Processor** | 64-bit x86_64 or ARM64 (2 cores, 1.2 GHz) | 4+ cores, 2.0 GHz+ (Intel VT-x / AMD-V supported) |
-| **Memory (RAM)** | 512 MB (Console) / 1.5 GB (GUI) | 4 GB+ |
-| **Storage** | 4 GB available disk space (or 8 GB Live USB) | 32 GB NVMe SSD |
+| **Memory (RAM)** | 512 MB (Console) / 1.5 GB (GUI) | 16 GB+ |
+| **Storage** | 4 GB available disk space (or 8 GB Live USB) | 960 GB NVMe SSD |
 | **Graphics** | Generic VESA / UEFI framebuffer | Intel, AMD, or NVIDIA with standard KMS |
-| **Network** | Any standard Ethernet or Wi-Fi (VirtIO supported) | Gigabit Ethernet / Intel Wi-Fi |
+| **Network** | Any standard Ethernet or Wi-Fi (VirtIO supported) | Gigabit Ethernet / Wi-Fi |
 
 ---
 
@@ -126,8 +126,8 @@ Boot SecureCurtain OS directly in a high-performance virtual machine with VirtIO
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/securecurtain-os.git
-cd securecurtain-os
+git clone https://github.com/securecurtain/securecurtainos.git
+cd securecurtainos
 
 # Launch using QEMU with VirtIO network and microkernel watchdog enabled
 qemu-system-x86_64 \
