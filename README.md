@@ -208,9 +208,12 @@ We welcome contributions from kernel developers, security researchers, and UI de
 
 ---
 
-## 📄 License & Integrity
+### ⚖️ Licensing & Enterprise Deployment
 
-SecureCurtain OS is distributed under the **GPL-3.0 / MIT Dual License**. All official binary releases are signed using the SecureCurtain Master Key (`0x97DBFA96989F6B12`).
+SecureCurtainOS is published under a dual-licensing model to support both the open-source community and professional environments: 
 
-*Engineered with precision for absolute stability and digital sovereignty.*
+* **Community Edition**: Freely available for developers, hobbyists, and researchers under the **GNU GPL v3** license.
+* **Commercial Edition**: Tailored for corporate offices, government agencies, and digital forensics laboratories requiring closed-source deployment, proprietary integration, or dedicated technical support.
+
+If your organization requires a commercial exemption from the GPL v3 constraints, please review our [LICENSE](/url?sa=i&source=web&rct=j&url=./LICENSE&ved=2ahUKEwj0p6-7iNaWAxWCLUQIHbRdONgQg5wRegYIAAgKEBM&opi=89978449&cd&psig=AOvVaw0YqTSDkGGaYWKW_H2koL9I&ust=1788650493100000) file or reach out directly to discuss corporate licensing terms at **securecurtainos.bugs@gmail.com**.
 
