@@ -215,5 +215,5 @@ SecureCurtainOS is published under a dual-licensing model to support both the op
 * **Community Edition**: Freely available for developers, hobbyists, and researchers under the **GNU GPL v3** license.
 * **Commercial Edition**: Tailored for corporate offices, government agencies, and digital forensics laboratories requiring closed-source deployment, proprietary integration, or dedicated technical support.
 
-If your organization requires a commercial exemption from the GPL v3 constraints, please review our [LICENSE](/url?sa=i&source=web&rct=j&url=./LICENSE&ved=2ahUKEwj0p6-7iNaWAxWCLUQIHbRdONgQg5wRegYIAAgKEBM&opi=89978449&cd&psig=AOvVaw0YqTSDkGGaYWKW_H2koL9I&ust=1788650493100000) file or reach out directly to discuss corporate licensing terms at **securecurtainos.bugs@gmail.com**.
+If your organization requires a commercial exemption from the GPL v3 constraints, please review our [LICENSE](https://github.com/SecureCurtain/securecurtainos.github.io/blob/main/LICENSE) file
 
