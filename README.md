@@ -196,15 +196,11 @@ origin-guard --status
 
 ---
 
-## 🤝 Contributing
+### About the Author
 
-We welcome contributions from kernel developers, security researchers, and UI designers!
+SecureCurtainOS is an independent project created by a cybersecurity student currently completing a **B.A. in Cybersecurity and Information Assurance**. 
 
-1. Fork the Project (`https://github.com/your-username/securecurtain-os/fork`)
-2. Create your Feature Branch (`git checkout -b feature/MicrokernelDriverEnhancement`)
-3. Commit your Changes (`git commit -m 'Add VirtIO GPU driver isolation'`)
-4. Push to the Branch (`git push origin feature/MicrokernelDriverEnhancement`)
-5. Open a Pull Request
+After spending several years navigating severe chronic health challenges and rebuilding a path forward, this project became both a technical challenge and a personal mission. SecureCurtainOS represents a dedication to resilient systems engineering, digital privacy, and proving that impactful innovation can be built from the ground up by solo developers overcoming immense hurdles.
 
 ---
 
