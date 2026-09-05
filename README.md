@@ -1,11 +1,11 @@
 # 🛡️ SecureCurtain OS
 ### *The Self-Healing, Dual-Persona Microkernel Operating System for Mission-Critical Security, Forensics, and Sovereign Computing*
 
-[![Platform](https://img.shields.io/badge/Architecture-x86__64%20%7C%20AArch64-blue.svg?style=for-the-badge)](https://github.com)
-[![Kernel](https://img.shields.io/badge/Kernel-Microkernel%20(Fault--Isolated)-emerald.svg?style=for-the-badge)](https://github.com)
-[![Dual-Subsystem](https://img.shields.io/badge/Subsystem-Linux%20(POSIX)%20%2B%20Windows%20(Win32)-purple.svg?style=for-the-badge)](https://github.com)
-[![Package Safety](https://img.shields.io/badge/Package%20Shield-Origin--Locked%20(Pacman%20%2B%20Apt)-indigo.svg?style=for-the-badge)](https://github.com)
-[![Telemetry](https://img.shields.io/badge/Telemetry-ZERO%20(Air--Gapped%20Verified)-rose.svg?style=for-the-badge)](https://github.com)
+[![Platform](https://img.shields.io/badge/Architecture-x86__64%20%7C%20AArch64-blue.svg?style=for-the-badge)](https://github.com/SecureCurtain/securecurtainos)
+[![Kernel](https://img.shields.io/badge/Kernel-Microkernel%20(Fault--Isolated)-emerald.svg?style=for-the-badge)](https://github.com/SecureCurtain/securecurtainos)
+[![Dual-Subsystem](https://img.shields.io/badge/Subsystem-Linux%20(POSIX)%20%2B%20Windows%20(Win32)-purple.svg?style=for-the-badge)](https://github.com/SecureCurtain/securecurtainos)
+[![Package Safety](https://img.shields.io/badge/Package%20Shield-Origin--Locked%20(Pacman%20%2B%20Apt)-indigo.svg?style=for-the-badge)](https://github.com/SecureCurtain/securecurtainos)
+[![Telemetry](https://img.shields.io/badge/Telemetry-ZERO%20(Air--Gapped%20Verified)-rose.svg?style=for-the-badge)](https://github.com/SecureCurtain/securecurtainos)
 
 ---
 
@@ -109,13 +109,113 @@ Engineered specifically for field engineers, incident responders, and system adm
 
 ## 💻 Hardware Requirements
 
-| Component | Minimum Specification | Recommended Specification |
+> ⚠️ **CRITICAL INSTALLER REQUIREMENT:** SecureCurtain OS enforces hardware verification during the pre-boot installation environment. Systems with less than **16 GB of physical RAM** or processors older than **AMD 1st Gen Ryzen / equivalent Intel** will **refuse to install**.
+
+| Component | Minimum Specification (Strictly Enforced) | Recommended Specification |
 | :--- | :--- | :--- |
-| **Processor** | 64-bit x86_64 or ARM64 (2 cores, 1.2 GHz) | 4+ cores, 2.0 GHz+ (Intel VT-x / AMD-V supported) |
-| **Memory (RAM)** | 512 MB (Console) / 1.5 GB (GUI) | 16 GB+ |
-| **Storage** | 4 GB available disk space (or 8 GB Live USB) | 960 GB NVMe SSD |
-| **Graphics** | Generic VESA / UEFI framebuffer | Intel, AMD, or NVIDIA with standard KMS |
-| **Network** | Any standard Ethernet or Wi-Fi (VirtIO supported) | Gigabit Ethernet / Wi-Fi |
+| **Processor (CPU)** | **AMD 1st Gen Ryzen** (Zen 14nm, e.g. Ryzen 3 1200 / Ryzen 5 1600+) OR **Equivalent Intel Core** (7th/8th Gen Core i5/i7+ with AVX2, VT-x, and AES-NI)<br>*⚠️ System installer will abort if CPU is below this baseline.* | AMD Ryzen 7/9 (Zen 3/4/5) or Intel Core i7/i9 (11th Gen+) (8+ cores, 3.8 GHz+, hardware virtualization) |
+| **Memory (RAM)** | **16 GB RAM (Minimum Hard Gate)**<br>*⚠️ Required for microkernel driver Ring 3 isolation, concurrent Linux+Win32 containers, and live forensic caches. Installer halts if < 16 GB.* | **32 GB – 64 GB+ RAM** (high-speed DDR4/DDR5 for real-time memory forensics and multi-persona execution) |
+| **Storage** | 64 GB available disk space (or 32 GB+ fast USB 3.2 for Live Rescue) | 256 GB+ NVMe PCIe Gen 4 SSD |
+| **Graphics** | UEFI framebuffer / KMS compliant GPU (Intel HD 630+, AMD Radeon RX/Vega, NVIDIA) | Dedicated modern GPU with KMS acceleration |
+| **Network** | Any standard Gigabit Ethernet or Wi-Fi 5/6 (VirtIO supported) | Dual Gigabit Ethernet / Intel Wi-Fi 6E |
+
+---
+
+## 🚀 Quick Start Guide
+
+### Option 1: Running in QEMU / KVM (Immediate Testing)
+Boot SecureCurtain OS directly in a high-performance virtual machine with VirtIO hardware acceleration (requires 16 GB allocated RAM):
+
+```bash
+# Clone the official repository
+git clone https://github.com/SecureCurtain/securecurtainos.git
+cd securecurtainos
+
+# Launch using QEMU with 16GB RAM, VirtIO network, and microkernel watchdog enabled
+qemu-system-x86_64 \
+  -m 16384 \
+  -smp 4 \
+  -cpu host \
+  -enable-kvm \
+  -cdrom ./build/securecurtain-rescue.iso \
+  -netdev user,id=net0,hostfwd=tcp::3000-:3000 \
+  -device virtio-net-pci,netdev=net0 \
+  -vga std \
+  -boot d
+```
+
+### Option 2: Creating a Live Bootable Rescue USB
+Flash SecureCurtain OS to any USB flash drive (8 GB or larger) with persistent signature storage:
+
+```bash
+# Linux / macOS (verify your target device path with lsblk first!)
+sudo dd if=securecurtain-rescue.iso of=/dev/sdX bs=4M status=progress conv=fsync
+
+# Windows
+# Use Rufus or Etcher in 'DD Image' mode.
+```
+
+### Option 3: Updating Anti-Malware Signatures on the Rescue USB
+Keep your USB up-to-date without re-flashing:
+
+```bash
+# Run inside SecureCurtain Terminal or GUI
+sc-malware-update --check
+sc-malware-update --fetch-latest
+```
+
+---
+
+## 📖 Package Management at a Glance
+
+Using our **Origin-Locked** command structure:
+
+```bash
+# Synchronize all upstream repository databases
+octopi-sync
+
+# Install an Arch Linux forensic utility safely
+pacman -S ghidra-bin
+
+# Install an AUR package through yay
+yay -S volatility3
+
+# Install a Debian forensic tool safely
+apt install sleuthkit
+
+# Inspect active Origin-Lock policies
+origin-guard --status
+```
+
+---
+
+## 🎯 Use Cases
+
+* **Incident Response & Triage:** Boot infected Windows or Linux laptops from a Live USB to scan registry persistence, dump memory, and isolate rootkits without booting the compromised OS.
+* **Sovereign Workstations:** An everyday computing platform free from commercial OS telemetries, telemetry keyloggers, and forced upgrade cycles.
+* **Air-Gapped Infrastructure:** Critical control environments (SCADA, defense, laboratory hardware) requiring a self-healing OS that never halts on peripheral driver faults.
+* **Malware Reverse Engineering:** Safe, contained workspace with built-in disassembly, hex inspection, and cross-platform binary execution.
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions from kernel developers, security researchers, and UI designers!
+
+1. Fork the Project (`https://github.com/SecureCurtain/securecurtainos/fork`)
+2. Create your Feature Branch (`git checkout -b feature/MicrokernelDriverEnhancement`)
+3. Commit your Changes (`git commit -m 'Add VirtIO GPU driver isolation'`)
+4. Push to the Branch (`git push origin feature/MicrokernelDriverEnhancement`)
+5. Open a Pull Request
+
+---
+
+## 📄 License & Integrity
+
+SecureCurtain OS is distributed under the **GPL-3.0 / MIT Dual License**. All official binary releases are signed using the SecureCurtain Master Key (`0x97DBFA96989F6B12`).
+
+*Engineered with precision for absolute stability and digital sovereignty.*
+
 
 ---
 
