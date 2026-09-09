@@ -20,6 +20,25 @@ You must purchase a **Commercial License**. To discuss custom licensing terms, e
 
 For independent developers, hobbyists, and the open-source community, this software is free to use, modify, and distribute under the terms of the GNU General Public License as published by the Free Software Foundation. 
 
+### Third-Party Software Notices
+
+This repository incorporates or depends on third-party software components. Your use of these components is subject to their respective licensing terms: 
+
+### 1. lwIP (Lightweight TCP/IP stack)
+
+* **License:** Modified BSD 3-Clause License
+* **Copyright:** Copyright (c) Swedish Institute of Computer Science. All rights reserved.
+* **Notice:**
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the copyright notices, conditions, and disclaimers are retained in accordance with the lwIP license terms.
+
+### 2. Mbed TLS (formerly PolarSSL)
+
+* **License:** Apache License, Version 2.0 (chosen via dual-license option)
+* **Copyright:** Copyright (c) The Mbed TLS Contributors (TrustedFirmware.org). All rights reserved.
+* **Notice:**
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this software except in compliance with the License. You may obtain a copy of the License at:
+http://www.apache.org/licenses/LICENSE-2.0
+
 ### GNU GENERAL PUBLIC LICENSE
 
 Version 3, 29 June 2007 
