@@ -24,6 +24,10 @@ For independent developers, hobbyists, and the open-source community, this softw
 
 This repository incorporates or depends on third-party software components. Your use of these components is subject to their respective licensing terms: 
 
+### Third-Party Software Notices
+
+This repository incorporates or depends on third-party software components. Your use of these components under the open-source tier is subject to their respective licensing terms: 
+
 ### 1. lwIP (Lightweight TCP/IP stack)
 
 * **License:** Modified BSD 3-Clause License
