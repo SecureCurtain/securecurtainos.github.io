@@ -1,0 +1,33 @@
+# --- C and Assembly Outputs ---
+*.o
+*.obj
+*.out
+*.exe
+*.bin
+*.elf
+*.so
+*.dll
+*.dylib
+*.a
+*.lib
+
+# --- Python Clutter ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+ENV/
+
+# --- TypeScript & Node ---
+node_modules/
+dist/
+out/
+.npm/
+*.tsbuildinfo
+
+# --- OS Specific Junk ---
+.DS_Store
+Thumbs.db
+.dep_cache/
