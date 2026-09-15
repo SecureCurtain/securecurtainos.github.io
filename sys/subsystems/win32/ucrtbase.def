@@ -1,0 +1,6 @@
+LIBRARY ucrtbase.dll
+EXPORTS
+    malloc
+    free
+    memcpy
+    memset

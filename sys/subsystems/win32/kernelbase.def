@@ -1,0 +1,5 @@
+LIBRARY kernelbase.dll
+EXPORTS
+    GetLastError
+    SetLastError
+    DebugBreak

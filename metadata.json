@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix OS Project File Structure Manager",
+  "description": "Interactive workspace for organizing custom OS codebase files, analyzing code snippets, and managing the my_os/sys kernel directory structure.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
