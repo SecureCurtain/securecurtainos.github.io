@@ -31,3 +31,4 @@ out/
 .DS_Store
 Thumbs.db
 .dep_cache/
+*.md
